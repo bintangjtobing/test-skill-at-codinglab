@@ -1,0 +1,220 @@
+<html>
+
+<head>
+  <script>
+    function cekNomor1() {
+      const bilangan = document.getElementById('inputBilangan');
+      var notif;
+      if (bilangan.value % 2 == 0) {
+        notif = "Bilangan " + bilangan.value + " Adalah Bilangan Genap";
+      } else {
+        notif = "Bilangan " + bilangan.value + " Adalah Bilangan Ganjil";
+      }
+      alert(notif);
+      bilangan.value = '';
+    }
+
+    function cekNomor3() {
+      const getWaktu = document.getElementById('waktu');
+      const getKecepatan = document.getElementById('kecepatan');
+      const konversiWaktu = getWaktu.value / 60; /// Konversi menit ke jam
+      const getHasilJarakPerjalanan = getKecepatan.value * konversiWaktu;
+      alert("Jarak perjalanan yang ditempuh oleh pengemudi dengan kecepatan " + getKecepatan.value +
+        "km/jam, dan waktu yang ditempuh sebanyak " + konversiWaktu + " jam, adalah sejumlah " +
+        getHasilJarakPerjalanan +
+        " km.")
+      getWaktu.value = '';
+      getKecepatan.value = '';
+    }
+  </script>
+  <style>
+    li {
+      font-weight: 600;
+      margin-bottom: 5px;
+      margin-top: 20px;
+    }
+
+    code {
+      font-family: Consolas, "courier new";
+      color: crimson;
+      background-color: #f1f1f1;
+      padding: 2px;
+      font-size: 105%;
+    }
+
+    .jawabanNomor4 li {
+      font-weight: 400;
+    }
+
+    img {
+      max-width: 300px;
+      margin-left: 30px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body style="padding-left: 180px;padding-top: 80px;padding-right: 200px;margin-bottom: 100px;">
+  <div>
+    <h1 style="margin-bottom:5px; margin-top:0;">Tes pemograman - Bintang Tobing</h1>
+    <h4 style="margin-bottom:0; margin-top:0;">
+      <script>
+        const date = new Date();
+
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+        let currentDate = `${day}-${month}-${year}`;
+        document.write(currentDate);
+      </script>
+    </h4>
+  </div>
+  <hr>
+  <p>
+    <ol>
+      <li>Buat sebuah fungsi yang akan mengecek sebuah bilangan merupakan bilang ganjil atau genap</li>
+      <label for="">Masukkan angka</label><br><input type="number" id="inputBilangan"> <button
+        onclick="cekNomor1()">Cek</button>
+      <li>Tampilkan semua bilangan genap dari 1 sampai 100 menggunakan fungsi pada soal nomor 1</li>
+      <script>
+        let i
+        let a = 100;
+        for (i = 1; i <= a; i++) {
+          if (i % 2 == 0) {
+            document.write(i, ", ")
+          }
+        }
+      </script>
+      <li>Buat sebuah sistem yang akan membantu memberitahu informasi jarak dengan inputan waktu perjalanan (dalam
+        menit) dan kecepatan (dalam km/jam).</li>
+      <label for="">Masukkan waktu perjalanan (menit)</label><br>
+      <input type="number" id="waktu"> <br><br>
+      <label for="">Masukkan kecepatan (km/jam)</label><br>
+      <input type="number" id="kecepatan"> <br><br>
+      <button onclick="cekNomor3()">Cek</button>
+      <li>Buat design database untuk sistem informasi sekolah. <br> Database tersebut memiliki tabel siswa, kelas, dan
+        guru yang ter-relasi. Dari data tersebut harus dapat diketahui, <abbr title="Goals">siapa wali kelas dari
+          seorang
+          siswa</abbr>!</li>
+      <ul class="jawabanNomor4">
+        <li>
+          Membuat tabel siswa <br>
+          <code>CREATE TABLE `siswa` (
+            `nis` int(5),
+            `nama_siswa` varchar(20),
+            `alamat` text,
+            PRIMARY KEY (`nis`)
+            );</code>
+        </li>
+        <li>
+          Membuat tabel guru <br>
+          <code>CREATE TABLE `guru` (
+            `nip` int(5),
+            `nis` int(5),
+            `kode_kelas` int(5),
+            `nama_pengajar` varchar(20),
+            `alamat` text,
+            PRIMARY KEY (`nis`,`nip`,`kode_kelas`)
+            );</code>
+        </li>
+        <li>
+          Membuat tabel kelas <br>
+          <code>CREATE TABLE `kelas` (
+            `kode_kelas` int(5),
+            `nama_kelas` varchar(20),
+            PRIMARY KEY (`kode_kelas`)
+            );</code>
+        </li>
+      </ul>
+      <img src="https://i.ibb.co/SRRSnX2/img-table.jpg" alt="img-table" border="0">
+      <li>Buat query untuk merelasikan ketiga table tadi, dengan tujuan <abbr title="goals">melihat wali kelas dari
+          seorang siswa</abbr></li>
+
+      <code>
+        SELECT
+        siswa.nim, siswa.nama_siswa, guru.nama_pengajar, kelas.nama_kelas <br>
+        FROM
+        guru <br>
+        INNER JOIN
+        siswa <br>
+        ON
+        siswa.nim = guru.nim<br>
+        INNER JOIN
+        kelas<br>
+        ON
+        kelas.kode_kelas = guru.kode_kelas<br>
+        WHERE
+        guru.nip = 1001
+      </code><br>
+      <img src="https://i.ibb.co/PFTwDw4/Screenshot-2023-01-14-at-3-10-34-PM.png">
+
+      <li>Buat contoh penggunaan class & fungsi</li>
+      Saya sudah memberikan contoh penggunaan class & fungsi pada lembar jawaban format HTML ini, antaranya,
+      <code>class</code> yang saya gunakan untuk padding, margin, membatasi lebar dan tinggi gambar, dan juga saya
+      menggunakan <code>fungsi</code> pada javascript seperti alert, dan menghitung tugas nomor 1,2, dan 3.
+      <br> Saya dapat memberikan contoh class & fungsi yang saya gunakan di lembar ini. <br><br>
+      <b>Penggunaan Class</b> <br>
+      <code>
+        code { <br>
+        font-family: Consolas, "courier new"; <br>
+        color: crimson; <br>
+        background-color: #f1f1f1; <br>
+        padding: 2px; <br>
+        font-size: 105%; <br>
+        } <br>
+        <br> <br>
+        .jawabanNomor4 li { <br>
+        font-weight: 400; <br>
+        } <br>
+      </code> <br>
+      <b>Penggunaan Fungsi</b><br>
+      <code>
+        function cekNomor3() { <br>
+        const getWaktu = document.getElementById('waktu'); <br>
+        const getKecepatan = document.getElementById('kecepatan'); <br>
+        const konversiWaktu = getWaktu.value / 60; /// Konversi menit ke jam <br>
+        const getHasilJarakPerjalanan = getKecepatan.value * konversiWaktu; <br>
+        alert("Jarak perjalanan yang ditempuh oleh pengemudi dengan kecepatan " + getKecepatan.value +
+        "km/jam, dan waktu yang ditempuh sebanyak " + konversiWaktu + " jam, adalah sejumlah " +
+        getHasilJarakPerjalanan +
+        " km.") <br>
+        getWaktu.value = ''; <br>
+        getKecepatan.value = ''; <br>
+        }
+      </code>
+
+      <li>Buat contoh penggunaan fungsi rekursif</li>
+      <code>
+        function sum(num) {<br>
+        if (num === 0) {<br>
+        return 0;<br>
+        } else {<br>
+        return num + sum(--num)<br>
+        }<br>
+        }<br>
+        sum(6);<br>
+      </code>
+      <script>
+        function sum(num) {
+          if (num === 0) {
+            return 0;
+          } else {
+            return num + sum(--num)
+          }
+        }
+        sum(6);
+        document.write('Hasilnya dapat ', sum(6));
+      </script>
+      <li>Jelaskan menurut anda apa itu SCRUM (Agile Development), dan Waterfall (Software development life cycle)!</li>
+      Menurut saya, SCRUM itu digunakan untuk pengembangan dan mengelola produk yang kompleks, sementara waterfall
+      digunakan pada pengembangan dan mengelola produk yang memiliki pengembangan yang berurutan.
+      <li>Apa yang saya tau tentang framework?</li>
+      Menurut sepemahaman saya, framework itu adalah kerangka yang dibuat oleh programmer/pengembang dari kode native
+      menjadi sebuah kerangka yang sangat dapat membantu developer/programmer dalam menulis program secara rapi. Saya
+      mengetahui beberapa framework dan yang sedang gunakan juga, yaitu Bootstrap native code nya dari CSS, NodeJS
+      native codenya dari Javascript, dan Laravel native codenya dari PHP.
+    </ol>
+  </p>
+</body>
+
+</html>
